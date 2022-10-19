@@ -1,0 +1,10 @@
+server:
+  port: 8081
+token:
+  validity:
+    seconds: 50
+spring:
+  redis:
+    host: localhost
+    password: redis123
+    port: 6379
