@@ -2,8 +2,8 @@ package br.com.iftoauth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,8 +12,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 @Configuration
 @EnableAuthorizationServer
@@ -24,7 +23,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
   private final AuthenticationManager authenticationManager;
   private final UserDetailsService userDetailsService;
 
-  private final RedisConnectionFactory redisConnectionFactory;
   @Value("${token.validity.seconds}")
   private int tokenTime;
 
@@ -47,11 +45,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     endpoints.authenticationManager(authenticationManager)
         .userDetailsService(userDetailsService)
         .reuseRefreshTokens(false)
-        .tokenStore(redisTokenStore());
+        .accessTokenConverter(jwtAccessTokenConverter());
   }
 
-  private TokenStore redisTokenStore() {
-    return new RedisTokenStore(redisConnectionFactory);
+  @Bean
+  public JwtAccessTokenConverter jwtAccessTokenConverter() {
+    JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+    jwtAccessTokenConverter.setSigningKey("tkn-oauth-ifto");
+    return jwtAccessTokenConverter;
   }
 
   @Override

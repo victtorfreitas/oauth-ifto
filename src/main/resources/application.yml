@@ -3,8 +3,3 @@ server:
 token:
   validity:
     seconds: 50
-spring:
-  redis:
-    host: localhost
-    password: redis123
-    port: 6379
