@@ -1,4 +1,4 @@
-package br.com.iftoauth;
+package br.com.iftoauth.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

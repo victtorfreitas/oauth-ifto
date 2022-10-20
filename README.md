@@ -20,8 +20,9 @@ and static field `grant_type` with value `refresh_token`.
 
 ## Generated Key 
 Open terminal in directory `resources/store/key` of the project and type down the command below:
-<br>`keytool -genkeypair -alias oauth_ifto -keyalg RSA -keypass <YOUR_PASSWORD> -keystore algafood.jks -storepass <YOUR_PASSWORD> -validity 3650`
-<br>Replace `<YOUR_PASSWORD>` for your any secret.
+<br>`keytool -genkeypair -alias oauth_ifto -keyalg RSA -keypass <YOUR_PASSWORD_KEYPASS> -keystore oauth_ifto.jks -storepass <YOUR_PASSWORD_STOREPASS> -validity 3650`
+<br>Replace `<YOUR_PASSWORD_KEYPASS>` for your any secret.
+<br>Replace `<YOUR_PASSWORD_STOREPASS>` for your any secret.
 
 ## Sequence Diagram
 

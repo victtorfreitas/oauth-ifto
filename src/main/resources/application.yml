@@ -1,7 +1,12 @@
+api:
+  client-id: app-ifto
+  secret-id: 0b666933-4eeb-4bd8-a760-aa69a76241f6
+
 server:
   port: 8081
 token:
   secret:
-    key: ${TOKEN_SECRET_KEY}
+    store-pass: ${TOKEN_SECRET_STORE_PASS}
+    pair-alias: ${TOKEN_SECRET_PAIR_ALIAS}
   validity:
     seconds: 50

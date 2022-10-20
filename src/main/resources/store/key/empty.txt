@@ -1,0 +1,2 @@
+This directory is store the key generated secret jwt.
+For generate a new, please read the README.md file.
