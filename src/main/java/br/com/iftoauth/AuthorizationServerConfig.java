@@ -1,7 +1,6 @@
 package br.com.iftoauth;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,8 +22,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
   private final AuthenticationManager authenticationManager;
   private final UserDetailsService userDetailsService;
 
-  @Value("${token.validity.seconds}")
-  private int tokenTime;
+  private final TokenProperty tokenProperty;
 
   @Override
   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -33,8 +31,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         .secret(passwordEncoder.encode("web123"))
         .authorizedGrantTypes("password", "refresh_token")
         .scopes("write", "read")
-        .accessTokenValiditySeconds(tokenTime)
-        .refreshTokenValiditySeconds(tokenTime * 2)
+        .accessTokenValiditySeconds(tokenProperty.getValiditySeconds())
+        .refreshTokenValiditySeconds(tokenProperty.getValiditySeconds() * 2)
         .and()
         .withClient("checktoken")
         .secret(passwordEncoder.encode("check123"));
@@ -51,7 +49,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
   @Bean
   public JwtAccessTokenConverter jwtAccessTokenConverter() {
     JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-    jwtAccessTokenConverter.setSigningKey("tkn-oauth-ifto");
+    jwtAccessTokenConverter.setSigningKey(tokenProperty.getSecretKey());
     return jwtAccessTokenConverter;
   }
 
