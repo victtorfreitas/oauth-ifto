@@ -10,3 +10,15 @@ token:
     pair-alias: ${TOKEN_SECRET_PAIR_ALIAS}
   validity:
     seconds: 50
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/oauth_ifto?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: ${user}
+    password: ${password}
+  jpa:
+    hibernate.ddl-auto: none
+    generate-ddl: true
+    show-sql: true
+  flyway:
+    locations: classpath:db/migration
