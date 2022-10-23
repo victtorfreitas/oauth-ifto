@@ -1,4 +1,4 @@
-package br.com.iftoauth.property;
+package br.com.iftoauth.security.property;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

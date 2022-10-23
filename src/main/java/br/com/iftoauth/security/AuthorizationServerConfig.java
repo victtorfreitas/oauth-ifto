@@ -1,7 +1,7 @@
 package br.com.iftoauth.security;
 
-import br.com.iftoauth.property.ApiProperty;
-import br.com.iftoauth.property.TokenProperty;
+import br.com.iftoauth.security.property.ApiProperty;
+import br.com.iftoauth.security.property.TokenProperty;
 import java.security.KeyPair;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
