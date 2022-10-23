@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "api.client-id",
+      "type": "java.lang.String",
+      "description": "It's the client id value."
+    },
+    {
+      "name": "api.secret-id",
+      "type": "java.lang.String",
+      "description": "It's the secret id value."
+    },
+    {
+      "name": "token.validity.seconds",
+      "type": "java.lang.String",
+      "description": "It's the token expiration time value."
+    },
+    {
+      "name": "token.secret.pair-alias",
+      "type": "java.lang.String",
+      "description": "It's the pair alias secret key value."
+    },
+    {
+      "name": "token.secret.store-pass",
+      "type": "java.lang.String",
+      "description": "It's the store pass secret key value."
+    }
+  ]
+}
