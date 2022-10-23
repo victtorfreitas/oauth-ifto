@@ -9,9 +9,13 @@ import org.springframework.security.core.userdetails.User;
 public class AuthUser extends User {
 
   private final String email;
+  private final String fullName;
+  private final String id;
 
   public AuthUser(UserEntity userEntity) {
     super(userEntity.getEmail(), userEntity.getPassword(), Collections.emptyList());
     email = userEntity.getEmail();
+    fullName = userEntity.getName();
+    id = userEntity.getUuid();
   }
 }

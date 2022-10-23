@@ -18,6 +18,8 @@ public class UserEntity {
   @Column(name = "id", nullable = false)
   private Long id;
 
+  private String uuid;
+
   private String name;
 
   private String email;
