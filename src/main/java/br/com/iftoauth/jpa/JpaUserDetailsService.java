@@ -26,7 +26,7 @@ public class JpaUserDetailsService implements UserDetailsService {
   }
 
   private Collection<? extends GrantedAuthority> getAuthorities(UserEntity userEntity) {
-    return userEntity.getGroups()
+    return userEntity.getRoles()
         .stream()
         .map(groupUserEntity -> new SimpleGrantedAuthority(groupUserEntity.getName().toUpperCase()))
         .collect(Collectors.toSet());
