@@ -1,10 +1,14 @@
 package br.com.iftoauth.jpa.entity;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 
@@ -26,4 +30,10 @@ public class UserEntity {
 
   private String password;
 
+  @ManyToMany
+  @JoinTable(name = "role_user",
+      joinColumns = @JoinColumn(name = "id_user"),
+      inverseJoinColumns = @JoinColumn(name = "id_role")
+  )
+  private Set<RoleEntity> roles;
 }
